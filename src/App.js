@@ -109,7 +109,7 @@ export default function SermonTranscriber() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/generate-metadata', {
+      const response = await fetch('/api/generate-metadata', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

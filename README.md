@@ -85,7 +85,34 @@ For best results:
 - `npm run server` - Run backend only (Express server on port 3001)
 - `npm run dev` - Run both concurrently
 - `npm run build` - Build for production
+- `npm run preview` - Build and run production server locally
 - `npm test` - Run tests
+
+## Deployment
+
+### Vercel Deployment
+
+1. **Push to GitHub**: Make sure your code is in a GitHub repository
+2. **Connect to Vercel**: 
+   - Go to [vercel.com](https://vercel.com)
+   - Sign in with GitHub
+   - Click "New Project" and import your repository
+3. **Set Environment Variables**:
+   - In Vercel dashboard, go to your project settings
+   - Add environment variable: `ANTHROPIC_API_KEY` with your actual API key
+4. **Deploy**: Vercel will automatically deploy your app
+
+The app will be available at your Vercel URL (e.g., `https://your-app-name.vercel.app`)
+
+### Local Production Test
+
+To test the production build locally:
+
+```bash
+npm run preview
+```
+
+This will build the React app and start the server, serving both the frontend and API on port 3001.
 
 ## Notes
 
