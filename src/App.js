@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, Mic, FileText, Download, Loader2, Play, Pause, Type, Sparkles, CheckCircle, ArrowRight, Zap, Target, BarChart3 } from 'lucide-react';
+import { Upload, Mic, FileText, Download, Loader2, Type, Sparkles, CheckCircle, ArrowRight, Zap, Target, BarChart3 } from 'lucide-react';
 
 export default function SermonTranscriber() {
   const [audioFile, setAudioFile] = useState(null);
@@ -7,12 +7,11 @@ export default function SermonTranscriber() {
   const [metadata, setMetadata] = useState(null);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState('');
   const [inputMode, setInputMode] = useState('text'); // 'text' or 'audio'
   
   const audioRef = useRef(null);
-  const recognitionRef = useRef(null);
+  // const recognitionRef = useRef(null);
 
   const handleTextFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -53,8 +52,8 @@ export default function SermonTranscriber() {
     setTranscription('');
 
     try {
-      // Create audio context for processing
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      // Create audio context for processing (currently unused)
+      // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
       const audioUrl = URL.createObjectURL(audioFile);
       audioRef.current = new Audio(audioUrl);
       
@@ -89,15 +88,15 @@ export default function SermonTranscriber() {
     }
   };
 
-  const stopTranscription = () => {
-    if (recognitionRef.current) {
-      recognitionRef.current.stop();
-    }
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
-    setIsTranscribing(false);
-  };
+  // const stopTranscription = () => {
+  //   if (recognitionRef.current) {
+  //     recognitionRef.current.stop();
+  //   }
+  //   if (audioRef.current) {
+  //     audioRef.current.pause();
+  //   }
+  //   setIsTranscribing(false);
+  // };
 
   const generateMetadata = async () => {
     if (!transcription.trim()) {
